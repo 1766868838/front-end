@@ -30,6 +30,24 @@
         // 通过构造函数新建实例时其实是对目标对象进行了浅拷贝，因此目标对象与代理对象会互相
         targetEpt // {name: "Tom"}
         
+        let exam ={
+            name: "Tom",
+            age: 24
+        }
+
+        let proxy = new Proxy({}, {
+            get(target, propKey, receiver) {
+                // 实现私有属性读取保护
+                if(propKey[0] === '_'){
+                    throw new Erro(`Invalid attempt to get private     "${propKey}"`);
+                }
+                console.log('Getting ' + propKey);
+                return target[propKey];
+            }
+        });
+        
+        let obj = Object.create(proxy);
+        console.log(obj.name)
     </script>
 </body>
 </html>
