@@ -9,27 +9,43 @@
 <body>
     
     <script>
+        //set(target, name, value, receiver)可以直接对指定的name属性进行更改，
+        //也可以通过设定的代码修改对应的属性
         let exam = {
             name: "Tom",
             age: 24,
             get info(){
                 return this.name + this.age;
+            },
+            set asdf(value){
+                //return this.age = value;
+            },
+            set info(value){
+                return this.age = value;
             }
         }
         Reflect.get(exam, 'name'); // "Tom"
-        
+        Reflect.get(exam, 'info'); // "Tom24"
+        console.log(exam)
+        Reflect.set(exam,'name',"mike");
+        //value 为空时会将 name 属性清除
+        Reflect.set(exam, 'age', ); 
+        console.log(exam)
         // 当 target 对象中存在 name 属性的 getter 方法， getter 方法的 this 会绑定 // receiver
         let receiver = {
             name: "Jerry",
             age: 20
         }
         Reflect.get(exam, 'info', receiver); // Jerry20
-        
-        // 当 name 为不存在于 target 对象的属性时，返回 undefined
-        Reflect.get(exam, 'birth'); // undefined
-        
-        // 当 target 不是对象时，会报错
-        Reflect.get(1, 'name'); // TypeError
+
+        let receiver1 = {
+            name: 'oppps'
+        }
+        Reflect.set(exam, 'info', 1, receiver1)//这里通过内部的this.age = value修改
+        console.log(receiver1);
+        Reflect.has(exam, 'name'); // 查看内部是否有该属性 ，有返回true
+        Reflect.deleteProperty(exam , 'name'); // 删除某一属性，成功返回true
+
     </script>
 </body>
 </html>
