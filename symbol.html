@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      let a1=Symbol.for("key");
+      let a2=Symbol.for("key");
+      let b1=Symbol("key");
+      let b2=Symbol("key");
+
+      // 执行结果 equal 
+      // 用Symbol.for()方法创建的 symbol 会被放入一个全局 symbol 注册表中。Symbol.for() 并不是每次都会创建一个新的 symbol，它会首先检查给定的 key 是否已经在注册表中了。假如是，则会直接返回上次存储的那个。否则，它会再新建一个。
+      if (a1===a2) {
+        console.log("equal");
+      }
+      else {
+        console.log("not equal");
+      }
+
+      // 执行结果 not equal
+      // Symbol() 每次都会创建一个
+      if (b1===b2) {
+        console.log("equal");
+      }
+      else {
+        console.log("not equal");
+      }
+
+      // 执行结果 not equal
+      // Symbol.for()：第一次创建一个新的
+      // Symbol() ：每次都创建一个新的
+      if (a1===b1) {
+        console.log("equal");
+      }
+      else {
+        console.log("not equal");
+      }
+    </script>
+</body>
+</html>
