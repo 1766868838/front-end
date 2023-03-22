@@ -12,7 +12,7 @@
         //set(target, name, value, receiver)可以直接对指定的name属性进行更改，
         //也可以通过设定的代码修改对应的属性
         let exam = {
-            name: "Toms",
+            name: "Tom",
             age: 24,
             get info(){
                 return this.name + this.age;
@@ -37,7 +37,6 @@
             age: 20
         }
         Reflect.get(exam, 'info', receiver); // Jerry20
-
         let receiver1 = {
             name: 'oppps'
         }
@@ -45,7 +44,7 @@
         console.log(receiver1);
         Reflect.has(exam, 'name'); // 查看内部是否有该属性 ，有返回true
         Reflect.deleteProperty(exam , 'name'); // 删除某一属性，成功返回true
-
+        Reflect.apply(Math.max, Math, [1, 3, 5, 3, 1]); // 5
     </script>
 </body>
 </html>
