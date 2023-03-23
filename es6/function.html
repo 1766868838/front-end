@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(name,age = 17){
+            console.log(name+","+age);
+        }
+        fn("amy"); //amt,17
+
+        var f = (a,b) => {
+            let result = a+b;
+            return result;
+        }
+        //等价于
+        var f = function(a,b){
+            return a+b;
+        }
+        var f2 = (id,name) => ({id: id, name: name});
+        f2(6,2);  // {id: 6, name: 2}
+        // 回调函数
+        var Person = {
+            'age': 18,
+            'sayHello': function () {
+                setTimeout(function () {
+                    console.log(this.age); //setTimeout是window的方法，返回的window中的age
+                });
+            }
+        };
+        
+        var age = 22;
+        Person.sayHello();  // 20，猜测是函数调用需要时间，这时age已经变成20了
+        var Person1 = {
+            'age': 18,
+            'sayHello': function () {
+                setTimeout(()=>{
+                    console.log(this.age);
+                });
+            }
+        };
+        var age = 20;
+        Person1.sayHello();  // 18
+
+
+        var Person = {
+            'age': 18,
+            'sayHello': ()=>{
+            console.log(this.age);
+        }
+        };
+        var age = 20;
+        Person.sayHello();  // 20
+        // 此时 this 指向的是全局对象
+        
+        var Person1 = {
+            'age': 18,
+            'sayHello': function () {
+                console.log(this.age);
+            }
+        };
+        var age = 20;
+        Person1.sayHello();   // 18
+        // 此时的 this 指向 Person1 对象
+
+    </script>
+</body>
+</html>
