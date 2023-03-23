@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        console.log(0.1+0.2===0.3) //false
+        console.log(  0.1+0.2-0.3 < Number.EPSILON) //true
+        Number.MAX_SAFE_INTEGER + 1 === Number.MAX_SAFE_INTEGER + 2; // true
+        Number.MAX_SAFE_INTEGER === Number.MAX_SAFE_INTEGER + 1;     // false
+        Number.parseInt('0011',2); // 3
+        Number.parseFloat('123.45abc') // 123.45
+        // 数值的精度超过 53 个二进制位时，由于第 54 位及后面的位被丢弃，会产生误判
+        Number.isInteger(1.0000000000000001) // true
+        // 用于正确返回大数乘法结果中的低位数值
+        Math.imul(0x7fffffff, 0x7fffffff); // 1
+        //用于返回数字的32 位无符号整数形式的前导0的个数。
+        console.log(Math.clz32(1)); // 31
+        Math.clz32(0b01000000000100000000000000000000); // 1
+        //用于计算 e 的 x 次方减 1 的结果，即 Math.exp(x) - 1 。
+        Math.expm1(1);  // 1.718281828459045
+        Math.expm1(0);  // 0
+        Math.expm1(-1); // -0.6321205588285577
+        2**3; //8
+    </script>
+</body>
+</html>

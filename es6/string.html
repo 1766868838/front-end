@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+	</script>
     <script>
         let string = "apple,banana,orange";
         //子串的识别
@@ -37,7 +37,7 @@ can you stop angry now?`;
         let string2= `Game start,${f()}`;
         console.log(string2);  // Game start,have fun!
 
-        function f(stringArr,...values){
+        function f1(stringArr,...values){
         let result = "";
         for(let i=0;i<stringArr.length;i++){
         result += stringArr[i];
@@ -47,10 +47,25 @@ can you stop angry now?`;
             }
         return result;
         }
-        f`My Name is ${name},I am ${age+1} years old next year.`;
+        f1`My Name is ${name},I am ${age+1} years old next year.`;
         // 等价于
-        f(['My Name is',',I am ',' years old next year.'],'Mike',28);
+        f1(['My Name is',',I am ',' years old next year.'],'Mike',28);  
 
+        function f2(stringArr,...values){
+            let result = "";
+            for(let i=0;i<stringArr.length;i++){
+            result += stringArr[i];
+            if(values[i]){
+                result += String(values[i]).replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
+                }
+            }
+            return result;
+        }
+        name = '<Amy&MIke>';
+        f2`<p>Hi, ${name}.I would like send you some message.</p>`;
+        // <p>Hi, &lt;Amy&amp;MIke&gt;.I would like send you some message.</p>
     </script>
 </body>
 </html>
