@@ -36,7 +36,6 @@
 				<br/><br/>
 				所属校区
 				<select v-model="userInfo.city">
-					<option value="">请选择校区</option>
 					<option value="beijing">北京</option>
 					<option value="shanghai">上海</option>
 					<option value="shenzhen">深圳</option>
@@ -54,7 +53,7 @@
 	<script type="text/javascript">
 		Vue.config.productionTip = false
 
-		new Vue({
+		vm = new Vue({
 			el:'#root',
 			data:{
 				userInfo:{
@@ -62,7 +61,7 @@
 					password:'',
 					age:18,
 					sex:'female',
-					hobby:[],
+					hobby:["eat"],
 					city:'beijing',
 					other:'',
 					agree:''
@@ -70,7 +69,7 @@
 			},
 			methods: {
 				demo(){
-					console.log(JSON.stringify(this.userInfo))
+					console.log(/* JSON.stringify */(this.userInfo))
 				}
 			}
 		})

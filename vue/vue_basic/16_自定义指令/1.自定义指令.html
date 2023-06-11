@@ -58,7 +58,7 @@
 			}
 		}) */
 
-		new Vue({
+		const vm = new Vue({
 			el:'#root',
 			data:{
 				name:'尚硅谷',
@@ -74,6 +74,7 @@
 					console.log('big',this) //注意此处的this是window
 					// console.log('big')
 					element.innerText = binding.value * 10
+					window.blur("hhh")
 				},
 				fbind:{
 					//指令与元素成功绑定时（一上来）
@@ -87,6 +88,7 @@
 					//指令所在的模板被重新解析时
 					update(element,binding){
 						element.value = binding.value
+						n = element.value
 					}
 				}
 			}

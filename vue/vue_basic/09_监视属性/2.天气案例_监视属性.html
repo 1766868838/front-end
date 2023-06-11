@@ -40,23 +40,23 @@
 					this.isHot = !this.isHot
 				}
 			},
-			/* watch:{
+			watch:{
 				isHot:{
-					immediate:true, //初始化时让handler调用一下
+					immediate:true, //值为true时初始化调用handler
 					//handler什么时候调用？当isHot发生改变时。
 					handler(newValue,oldValue){
 						console.log('isHot被修改了',newValue,oldValue)
 					}
 				}
-			} */
+			}
 		})
 
-		vm.$watch('isHot',{
+		/* 	vm.$watch('isHot',{
 			immediate:true, //初始化时让handler调用一下
 			//handler什么时候调用？当isHot发生改变时。
 			handler(newValue,oldValue){
 				console.log('isHot被修改了',newValue,oldValue)
 			}
-		})
+		}) */
 	</script>
 </html>
